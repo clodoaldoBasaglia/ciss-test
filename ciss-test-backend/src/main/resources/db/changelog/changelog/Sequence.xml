@@ -4,6 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <include file="db/changelog/changelog/Employee.xml" relativeToChangelogFile="false"/>
-    <include file="db/changelog/changelog/Sequence.xml" relativeToChangelogFile="false"/>
+
+    <changeSet id="00000000000001" author="clodoaldo.fonseca">
+        <createSequence sequenceName="sequence_generator" startValue="1" incrementBy="1"/>
+    </changeSet>
+
 </databaseChangeLog>
