@@ -69,7 +69,7 @@ public class EmployeeResource {
 
     @GetMapping("/employees/all")
     public ResponseEntity<List<EmployeeDTO>> getAllEmployeesWithoutFilter(){
-        List<EmployeeDTO> employeeList =employeeService.getAllEmployees();
+        List<EmployeeDTO> employeeList = employeeService.getAllEmployees();
         return ResponseEntity.ok(employeeList);
     }
     @GetMapping("/employees")
