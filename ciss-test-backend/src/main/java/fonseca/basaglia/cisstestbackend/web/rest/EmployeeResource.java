@@ -37,8 +37,12 @@ public class EmployeeResource {
     @CrossOrigin
     @PostMapping("/employees")
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO save = employeeService.save(employeeDTO);
-        return ResponseEntity.ok(save);
+        try {
+            EmployeeDTO save = employeeService.save(employeeDTO);
+            return ResponseEntity.ok(save);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
+        }
     }
     @CrossOrigin
     @GetMapping("/employee/{id}")

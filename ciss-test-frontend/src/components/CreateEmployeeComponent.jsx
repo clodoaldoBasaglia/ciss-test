@@ -40,6 +40,8 @@ class CreateEmployeeComponent extends Component {
         if (this.state.id === '_add') {
             EmployeeService.createEmployee(employee).then(res => {
                 this.props.history.push('/employees');
+            }).catch(error => {
+                alert("Esse email já foi cadastrado!")
             });
         } else {
             EmployeeService.updateEmployee(employee, this.state.id).then(res => {
