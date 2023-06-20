@@ -14,15 +14,17 @@ class ListEmployeeComponent extends Component {
     }
 
     deleteEmployee(id) {
-        EmployeeService.deleteEmployee(id).then(res => {
-            this.setState({ employees: this.state.employees.filter(employee => employee.id !== id) });
-        });
+        if (window.confirm(`Tem certeza que deseja deletar o funcionário de ID ${id} ?`)) {
+            EmployeeService.deleteEmployee(id).then(res => {
+                this.setState({ employees: this.state.employees.filter(employee => employee.id !== id) });
+            });
+        }
     }
     viewEmployee(id) {
-        this.props.history.push(`/ver-funcionario/${id}`);
+        this.props.history.push(`/view-employee/${id}`);
     }
     editEmployee(id) {
-        this.props.history.push(`/adicionar-funcionario/${id}`);
+        this.props.history.push(`/add-employee/${id}`);
     }
 
     componentDidMount() {
@@ -32,7 +34,7 @@ class ListEmployeeComponent extends Component {
     }
 
     addEmployee() {
-        this.props.history.push('/adicionar-funcionario/_add');
+        this.props.history.push('/add-employee/_add');
     }
 
     render() {
@@ -67,7 +69,7 @@ class ListEmployeeComponent extends Component {
                                             <td>
                                                 <button onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update </button>
                                                 <button style={{ marginLeft: "10px" }} onClick={() => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
-                                                <button style={{ marginLeft: "10px" }} onClick={ this.viewEmployee(employee.id)} className="btn btn-info">Ver </button>
+                                                <button style={{ marginLeft: "10px" }} onClick={() => this.viewEmployee(employee.id)} className="btn btn-info">Ver </button>
                                             </td>
                                         </tr>
                                 )
