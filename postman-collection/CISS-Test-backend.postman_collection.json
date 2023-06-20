@@ -104,7 +104,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employees?number=2&size=30&sort=name",
+					"raw": "http://localhost:8080/api/employees?number=1&size=30&sort=name",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -117,7 +117,7 @@
 					"query": [
 						{
 							"key": "number",
-							"value": "2"
+							"value": "1"
 						},
 						{
 							"key": "size",
@@ -127,6 +127,36 @@
 							"key": "sort",
 							"value": "name"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"name\": \"Denzel\",\r\n    \"lastName\": \"Basaglia da Fonseca\",\r\n    \"email\": \"cvbncv@gmail.com\",\r\n    \"pisNumber\": \"72355688910\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"11"
 					]
 				}
 			},

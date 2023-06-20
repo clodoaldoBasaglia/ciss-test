@@ -34,11 +34,13 @@ public class EmployeeResource {
         this.employeeRepository = employeeRepository;
     }
 
+    @CrossOrigin
     @PostMapping("/employees")
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO save = employeeService.save(employeeDTO);
         return ResponseEntity.ok(save);
     }
+    @CrossOrigin
     @GetMapping("/employee/{id}")
     public ResponseEntity<Optional<EmployeeDTO>> getEmployee(@PathVariable Long id){
         Optional<EmployeeDTO> employeeDTO = employeeService.findOne(id);
@@ -48,6 +50,7 @@ public class EmployeeResource {
         return ResponseEntity.ok(employeeDTO);
     }
 
+    @CrossOrigin
     @PutMapping("/employees/{id}")
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable("id") Long id,
                                                       @Valid @RequestBody EmployeeDTO employeeDTO){
@@ -61,17 +64,20 @@ public class EmployeeResource {
         return ResponseEntity.ok(empsDTO);
     }
 
+    @CrossOrigin
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Long id){
         employeeService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin
     @GetMapping("/employees/all")
     public ResponseEntity<List<EmployeeDTO>> getAllEmployeesWithoutFilter(){
         List<EmployeeDTO> employeeList = employeeService.getAllEmployees();
         return ResponseEntity.ok(employeeList);
     }
+    @CrossOrigin
     @GetMapping("/employees")
     public ResponseEntity<Page<EmployeeDTO>> getAllEmployees(Pageable pageable){
         Page<EmployeeDTO> page = employeeService.findAll(pageable);
